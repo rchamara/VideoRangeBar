@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/_60sdp"
+        android:background="@drawable/video_view_shape">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_60sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+                <VideoView
+                    android:id="@+id/videoLoader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/icon_video_play"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/play_button" />
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/rangeBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_gravity="bottom">
+
+
+
+            <RelativeLayout
+                android:id="@+id/timeLineBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:id="@+id/image_slider"/>
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible"
+                    android:src="@drawable/seek_line"
+                    android:id="@+id/seek_line"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/leftSeekOverlay"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:alpha="0.8"
+                android:background="@color/colorOverlay"
+                android:visibility="invisible"/>
+
+            <RelativeLayout
+                android:id="@+id/rightSeekOverlay"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:alpha="0.8"
+                android:layout_alignParentRight="true"
+                android:background="@color/colorOverlay"
+                android:visibility="invisible"/>
+
+
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/seek_left_handle"
+                android:id="@+id/seek_bar_left"/>
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/seek_right_handle"
+                android:id="@+id/seek_bar_right"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_gravity="bottom">
+    </RelativeLayout>
+
+</FrameLayout>
