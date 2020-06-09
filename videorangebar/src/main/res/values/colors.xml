@@ -2,4 +2,5 @@
 <resources>
     <color name="colorAccent">#297E75</color>
     <color name="colorOverlay">#222525</color>
+    <color name="colorBottomBar">#C5AC0F</color>
 </resources>

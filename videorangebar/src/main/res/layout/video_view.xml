@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBottomBar">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/_60sdp"
+        android:layout_marginBottom="@dimen/_40sdp"
         android:background="@drawable/video_view_shape">
 
         <RelativeLayout
@@ -118,8 +119,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_50sdp"
+        android:layout_height="@dimen/_40sdp"
         android:layout_gravity="bottom">
+
+        <ImageView
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="match_parent"
+            android:src="@drawable/back_button"
+            android:id="@+id/video_edit_back"/>
+
+        <ImageView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/done"
+            android:id="@+id/video_edit_done"/>
     </RelativeLayout>
 
 </FrameLayout>

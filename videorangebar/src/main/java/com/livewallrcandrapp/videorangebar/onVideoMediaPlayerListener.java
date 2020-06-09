@@ -9,4 +9,6 @@ public interface onVideoMediaPlayerListener {
      void onCompletion(MediaPlayer mp);
      void onException(Exception exc);
      void onRangeSeekBarMove(int sb_flag, int time);
+     void onBackButtonTouch(boolean value);
+     void onDoneButtonTouch(boolean value);
 }

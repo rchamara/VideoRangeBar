@@ -3,22 +3,19 @@ package com.livewallrcandrapp.videorangebar;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Build;
-import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.SeekBar;
 import android.widget.VideoView;
 
 import java.util.ArrayList;
@@ -35,6 +32,8 @@ public class VideoRangeView extends FrameLayout {
     private RelativeLayout mTimeLineParent;
     private RelativeLayout mImageSliderContainer;
     private ImageView mSeekLineSlide;
+    private ImageView mDone;
+    private ImageView mBack;
 
     private RelativeLayout mLeftSeekOverlay;
     private RelativeLayout mRightSeekOverlay;
@@ -78,6 +77,7 @@ public class VideoRangeView extends FrameLayout {
      * init with layout inflate services
      * @param context
      */
+    @SuppressLint("ClickableViewAccessibility")
     private void initControl(Context context) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.video_view, this, true);
@@ -93,6 +93,10 @@ public class VideoRangeView extends FrameLayout {
         mSeekLineSlide = (ImageView) findViewById(R.id.seek_line);
         mTimeLineParent = (RelativeLayout) findViewById(R.id.timeLineBar);
         mImageSliderContainer = (RelativeLayout) findViewById(R.id.image_slider);
+        mDone = (ImageView) findViewById(R.id.video_edit_done);
+        mBack = (ImageView) findViewById(R.id.video_edit_back);
+        onBackButtonTouchListener();
+        onDoneButtonTouchListener();
 
         mRangeSeekBarView = new RangeSeekBarsView();
         mRangeSeekBarView.setOnRangeSeekBarListener(onSeekBarListener());
@@ -107,6 +111,52 @@ public class VideoRangeView extends FrameLayout {
 
         mImageSliderView = new ImageSliderView();
 
+    }
+
+    /**
+     * fire when back image touch
+     */
+    @SuppressLint("ClickableViewAccessibility")
+    private void onBackButtonTouchListener() {
+        if (mBack != null) {
+            mBack.setOnTouchListener(new View.OnTouchListener() {
+
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if (mOnVideoMediaPlayerListener != null) mOnVideoMediaPlayerListener.onBackButtonTouch(true);
+                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                        Animation animFadeIn = AnimationUtils.loadAnimation(mContext, R.anim.fade_in);
+                        mBack.startAnimation(animFadeIn);
+                    }
+                    return true;
+                }
+            });
+        } else {
+            Log.e(TAG, "[onBackButtonTouchListener] back button null");
+        }
+    }
+
+    /**
+     * fire when done image touch
+     */
+    @SuppressLint("ClickableViewAccessibility")
+    private void onDoneButtonTouchListener() {
+        if (mDone != null) {
+            mDone.setOnTouchListener(new View.OnTouchListener() {
+
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    if (mOnVideoMediaPlayerListener != null) mOnVideoMediaPlayerListener.onDoneButtonTouch(true);
+                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                        Animation animFadeIn = AnimationUtils.loadAnimation(mContext, R.anim.fade_in);
+                        mDone.startAnimation(animFadeIn);
+                    }
+                    return true;
+                }
+            });
+        } else {
+            Log.e(TAG, "[onDoneButtonTouchListener] done button is null");
+        }
     }
 
     private onTimeLineListeners onTimeLineViewListeners() {
