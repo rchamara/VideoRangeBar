@@ -146,8 +146,8 @@ public class VideoRangeView extends FrameLayout {
 
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    if (mOnVideoMediaPlayerListener != null) mOnVideoMediaPlayerListener.onDoneButtonTouch(true);
                     if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                        if (mOnVideoMediaPlayerListener != null) mOnVideoMediaPlayerListener.onDoneButtonTouch(true);
                         Animation animFadeIn = AnimationUtils.loadAnimation(mContext, R.anim.fade_in);
                         mDone.startAnimation(animFadeIn);
                     }
